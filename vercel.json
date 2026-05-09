@@ -1,0 +1,30 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/komunitas",
+      "destination": "/Komunitas.html"
+    },
+    {
+      "source": "/komunitas/",
+      "destination": "/Komunitas.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/Komunitas.html",
+      "destination": "/komunitas",
+      "permanent": true
+    },
+    {
+      "source": "/Komunitas",
+      "destination": "/komunitas",
+      "permanent": true
+    }
+  ]
+}
