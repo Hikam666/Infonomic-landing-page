@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Infonomic.id — Media Ekonomi Indonesia. Literasi finansial, analisis pasar, dan wawasan ekonomi global." />
+  <title>Infonomic.id</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Space+Mono:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+
+  <!-- ═══ TICKER ═══ -->
+  <div class="ticker-wrap" aria-hidden="true">
+    <div class="ticker" id="ticker">
+      <span>IDX COMPOSITE <strong></strong></span><span class="sep">◆</span>
+      <span>BTC/USD <strong></strong></span><span class="sep">◆</span>
+      <span>USD/IDR <strong></strong></span><span class="sep">◆</span>
+      <span>BI RATE <strong></strong></span><span class="sep">◆</span>
+      <span>GDP GROWTH <strong></strong></span><span class="sep">◆</span>
+      <span>INFLASI <strong></strong></span><span class="sep">◆</span>
+      <span>GOLD<strong></strong></span><span class="sep">◆</span>
+      <span>XAU<strong></strong></span><span class="sep">◆</span>
+      <!-- duplicate for seamless loop -->
+      <span>IDX COMPOSITE <strong></strong></span><span class="sep">◆</span>
+      <span>BTC/USD <strong></strong></span><span class="sep">◆</span>
+      <span>USD/IDR <strong></strong></span><span class="sep">◆</span>
+      <span>BI RATE <strong></strong></span><span class="sep">◆</span>
+      <span>GDP GROWTH <strong></strong></span><span class="sep">◆</span>
+      <span>INFLASI <strong></strong></span><span class="sep">◆</span>
+      <span>GOLD<strong></strong></span><span class="sep">◆</span>
+      <span>XAU<strong></strong></span><span class="sep">◆</span>
+    </div>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero" >
+    <div class="glow" aria-hidden="true"></div>
+
+    <p class="hero-eyebrow">Infonomic.id &nbsp;·&nbsp; Community For All</p>
+
+    <h1 class="hero-title">
+      Infonomic.id<br>
+      <em>Edukasi, Riset, dan <br> Coaching Investasi & Ekonomi</em>
+    </h1>
+
+    <p class="hero-sub">
+      Kasih kamu cara baru memahami Ekonomi dan Investasi dengan mudah
+    </p>
+
+    <!-- ornament divider -->
+    <div class="ornament" aria-hidden="true">
+      <div class="ornament-line"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-line"></div>
+    </div>
+
+    <!-- stats strip -->
+    <div class="stat-strip">
+      <div class="stat-item">
+        <span class="stat-num" id="stat-followers">0</span>
+        <span class="stat-lbl">Followers</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num" id="stat-anggota">0</span>
+        <span class="stat-lbl">Anggota Komunitas</span>
+      </div>
+    </div>
+
+    <!-- link list -->
+    <nav class="links" aria-label="Link utama">
+
+      <a class="link-item" href="https://instagram.com/infonomic.id" target="_blank" rel="noopener">
+        <div class="link-left">
+          <span class="link-tag">Social Media</span>
+          <span class="link-label">Instagram</span>
+        </div>
+        <div class="link-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 17L17 7M7 7h10v10"/>
+          </svg>
+        </div>
+      </a>
+      <a class="link-item" href="komunitas.html" target="_self" rel="noopener">
+        <div class="link-left">
+          <span class="link-tag">Komunitas</span>
+          <span class="link-label">Whatsapp</span>
+        </div>
+        <div class="link-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 17L17 7M7 7h10v10"/>
+          </svg>
+        </div>
+      </a>
+
+      <div class="section-div" aria-hidden="true"></div>
+
+      <!-- placeholder 1 — ganti href & label sesuai kebutuhan -->
+      <a class="link-item" href="#" target="_blank" rel="noopener">
+        <div class="link-left">
+          <span class="link-tag">Coming Soon</span>
+          <span class="link-label">——</span>
+        </div>
+        <div class="link-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 17L17 7M7 7h10v10"/>
+          </svg>
+        </div>
+      </a>
+    </nav>
+  </section>
+
+  <!-- ═══ GALERI ═══ -->
+  <section class="gallery-section">
+    <span class="gallery-label">Gallery</span>
+    <h2 class="gallery-heading">Trade Screenshots</h2>
+    <p class="gallery-subheading">Koleksi screenshot dari setiap trading call dan analisis</p>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item">
+        <img src="./images/BBNI.jpg" alt="BBNI Chart" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="./images/BBNI-PROFIT.jpg" alt="BBNI Profit" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="./images/Genius.jpg" alt="Genius Chart" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="./images/Genius-profit.jpg" alt="Genius Profit" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="./images/SSIA.jpg" alt="SSIA Chart" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="./images/SSIA-PROFIT.jpg" alt="SSIA Profit" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ═══ -->
+  <section class="contact-section">
+    <span class="contact-label">Contact</span>
+    <h2 class="contact-heading">For further inquiries, please contact below</h2>
+
+    <div class="contact-card">
+      <div class="cp-contacts">
+        <a class="cp-link" href="https://instagram.com/infonomic.id" target="_blank" rel="noopener">
+          <svg class="cp-link-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <circle cx="12" cy="12" r="5"/>
+            <circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/>
+          </svg>
+          @infonomic.id
+        </a>
+
+        <a class="cp-link" href="mailto:InfonomicID@gmail.com" target="_blank" rel="noopener">
+          <svg class="cp-link-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <path d="m2 7 10 7 10-7"/>
+          </svg>
+          InfonomicID@gmail.com
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <span>© 2026 Infonomic.id</span>
+    <span>memahami Ekonomi dan Investasi dengan mudah</span>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
