@@ -3,11 +3,11 @@
   "rewrites": [
     {
       "source": "/komunitas",
-      "destination": "/Komunitas.html"
+      "destination": "/komunitas.html"
     },
     {
       "source": "/komunitas/",
-      "destination": "/Komunitas.html"
+      "destination": "/komunitas.html"
     }
   ],
   "redirects": [
