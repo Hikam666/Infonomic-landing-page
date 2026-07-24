@@ -8,11 +8,12 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Space+Mono:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/jpeg" href="images/logo.jpg" />
 
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/komunitas.css" />
+  <link rel="stylesheet" href="css/animations.css" />
 </head>
 <body>
 
@@ -28,12 +29,15 @@
   </nav>
 
   <!-- ── hero header ── -->
-  <header class="kom-hero scroll-reveal">
+  <header class="kom-hero">
     <div class="kom-hero-glow" aria-hidden="true"></div>
 
     <div class="kom-hero-inner">
       <p class="kom-eyebrow">Komunitas Resmi</p>
-      <h1 class="kom-title">Infonomic <em>Community</em></h1>
+      <h1 class="kom-title line-reveal-title">
+        <span class="line-reveal"><span class="line-reveal-inner">Infonomic</span></span>
+        <span class="line-reveal line-em"><span class="line-reveal-inner">Community</span></span>
+      </h1>
       <p class="kom-tagline">
         Hii Fellow Infonomists, Traders &amp; Investors —<br>
         selamat datang di ruang diskusi, riset, dan literasi pasar modal Indonesia.
@@ -77,19 +81,19 @@
       </div>
 
       <div class="screenshots-grid">
-        <figure style="margin:0; text-align:center; width:100%;">
-          <img src="images/grubb.png" alt="Daftar Grup IFN — screenshot" style="max-width:320px; width:100%; height:auto; border:1px solid var(--line); display:block; margin:0 auto;">
-          <figcaption style="font-size:12px; color:var(--muted); margin-top:8px;">Screenshot: Daftar grup IFN</figcaption>
+        <figure class="kom-shot">
+          <img src="images/grubb.png" alt="Daftar Grup IFN — screenshot">
+          <figcaption>Screenshot: Daftar grup IFN</figcaption>
         </figure>
       </div>
     </div>
   </section>
 
   <!-- ── rooms grid ── -->
-  <section class="kom-rooms scroll-reveal">
+  <section class="kom-rooms">
     <div class="kom-rooms-inner">
 
-      <div class="section-label">
+      <div class="section-label scroll-reveal">
         <span class="label-line"></span>
         <span class="label-text">Terminal &amp; Ruang Diskusi</span>
         <span class="label-line"></span>
@@ -157,12 +161,12 @@
       <p class="cta-sub">Selamat belajar dan semoga bermanfaat</p>
       <h2 class="cta-heading">Siap Bergabung?</h2>
 
-      <a class="cta-btn" href="https://chat.whatsapp.com/KziTYflgWGiEcV1B0JriVp" target="_blank" rel="noopener">
+      <a class="cta-btn cta-pulse" href="https://chat.whatsapp.com/KziTYflgWGiEcV1B0JriVp" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/>
           <path d="M9 10c0 5 6.5 6 6 1"/>
         </svg>
-        Gabung via WhatsApp
+        <span>Gabung via WhatsApp</span>
       </a>
     </div>
   </section>
@@ -173,27 +177,6 @@
     <span>Ekonomi adalah senjata</span>
   </footer>
 
-  <script>
-    (function () {
-      const targets = document.querySelectorAll('.scroll-reveal');
-
-      if (!('IntersectionObserver' in window)) {
-        targets.forEach((element) => element.classList.add('is-visible'));
-        return;
-      }
-
-      const observer = new IntersectionObserver((entries, instance) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            instance.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
-
-      targets.forEach((element) => observer.observe(element));
-    }());
-  </script>
-
+  <script src="js/main.js"></script>
 </body>
 </html>

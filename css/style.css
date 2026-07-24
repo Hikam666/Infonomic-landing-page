@@ -21,9 +21,11 @@
   --muted:    #6b6455;
   --line:     rgba(201, 168, 76, 0.25);
 
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-mono:    'Space Mono', 'Courier New', monospace;
-  --font-serif:   'Libre Baskerville', Georgia, serif;
+  /* Judul & highlight → Montserrat; teks kecil → Poppins */
+  --font-display: 'Montserrat', system-ui, sans-serif;
+  --font-mono:    'Poppins', system-ui, sans-serif;
+  --font-serif:   'Poppins', system-ui, sans-serif;
+  --font-body:    'Poppins', system-ui, sans-serif;
 }
 
 /* light mode removed */
@@ -36,7 +38,7 @@ html {
 body {
   background: var(--ink);
   color: var(--cream);
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   overflow-x: hidden;
   min-height: 100vh;
   padding-top: 36px;
@@ -78,11 +80,11 @@ body::before {
 }
 
 .ticker span {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 11px;
   color: var(--ink);
   padding: 0 24px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.04em;
 }
 
@@ -117,18 +119,17 @@ body::before {
   z-index: 0;
 }
 
-/* radial glow */
+/* radial glow (inner pulse + outer parallax via JS) */
 .glow {
   position: absolute;
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(181, 55, 42, 0.15) 0%, transparent 70%);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -55%);
-  animation: pulse 6s ease-in-out infinite;
   z-index: 0;
+  pointer-events: none;
 }
 
 /* ensure hero children sit above pseudo-elements */
@@ -227,7 +228,7 @@ body::before {
 .hero-title {
   font-family: var(--font-display);
   font-size: clamp(40px, 7vw, 76px);
-  font-weight: 900;
+  font-weight: 700;
   line-height: 0.92;
   letter-spacing: -0.02em;
   color: var(--cream);
@@ -235,8 +236,14 @@ body::before {
   animation: fadeUp 0.6s 0.15s both;
 }
 
+.hero-title.line-reveal-title {
+  animation: none;
+}
+
 .hero-title em {
-  font-style: italic;
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 700;
   color: var(--gold);
   display: block;
   font-size: clamp(18px, 3.2vw, 34px);
@@ -244,8 +251,8 @@ body::before {
 }
 
 .hero-sub {
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-body);
+  font-style: normal;
   font-size: 14px;
   color: var(--muted);
   margin-top: 20px;
@@ -308,13 +315,14 @@ body::before {
 .stat-num {
   font-family: var(--font-display);
   font-size: clamp(20px, 3.6vw, 34px);
-  font-weight: 900;
+  font-weight: 700;
   color: var(--gold2);
   display: block;
   line-height: 1;
 }
 
 .stat-lbl {
+  font-family: var(--font-body);
   font-size: 9px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -372,6 +380,8 @@ body::before {
   padding-left: 12px;
 }
 
+/* base hover lift reinforced in animations.css */
+
 .link-left {
   display: flex;
   flex-direction: column;
@@ -379,11 +389,12 @@ body::before {
 }
 
 .link-tag {
+  font-family: var(--font-body);
   font-size: 9px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gold);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .link-label {
@@ -445,6 +456,7 @@ body::before {
 }
 
 .contact-label {
+  font-family: var(--font-body);
   font-size: 10px;
   letter-spacing: 0.25em;
   color: var(--gold);
@@ -533,6 +545,7 @@ body::before {
 }
 
 .cp-role {
+  font-family: var(--font-body);
   font-size: 10px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -558,7 +571,7 @@ body::before {
   font-size: 12px;
   color: var(--cream);
   letter-spacing: 0.05em;
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
 }
 
 .cp-link:hover {
@@ -587,6 +600,7 @@ body::before {
 }
 
 .gallery-label {
+  font-family: var(--font-body);
   font-size: 10px;
   letter-spacing: 0.25em;
   color: var(--gold);
@@ -607,8 +621,8 @@ body::before {
 }
 
 .gallery-subheading {
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-body);
+  font-style: normal;
   font-size: 13px;
   color: var(--muted);
   margin-bottom: 32px;
@@ -634,19 +648,13 @@ body::before {
   position: relative;
   overflow: hidden;
   border: 1px solid var(--line);
-  cursor: pointer;
+  cursor: zoom-in;
   transition: all 0.3s ease;
   background: rgba(13, 13, 13, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 240px;
-}
-
-.gallery-item:hover {
-  border-color: rgba(201, 168, 76, 0.5);
-  transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(201, 168, 76, 0.1);
 }
 
 .gallery-item img {
@@ -689,10 +697,7 @@ body::before {
   100% { background-position: 0 60px; }
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 0.6; transform: translate(-50%, -55%) scale(1); }
-  50%       { opacity: 1;   transform: translate(-50%, -55%) scale(1.08); }
-}
+/* pulse moved to .glow-inner in animations.css */
 
 @keyframes rotateBorder {
   0%   { transform: rotate(0deg); }

@@ -55,18 +55,6 @@
   text-align: center;
 }
 
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-  will-change: opacity, transform;
-}
-
-.scroll-reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .kom-hero-glow {
   position: absolute;
   width: 700px;
@@ -101,6 +89,7 @@
 }
 
 .kom-eyebrow {
+  font-family: var(--font-body);
   font-size: 10px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -112,7 +101,7 @@
 .kom-title {
   font-family: var(--font-display);
   font-size: clamp(28px, 5vw, 56px);
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.0;
   letter-spacing: -0.02em;
   color: var(--cream);
@@ -120,15 +109,21 @@
   animation: fadeUp 0.5s 0.12s both;
 }
 
+.kom-title.line-reveal-title {
+  animation: none;
+}
+
 .kom-title em {
-  font-style: italic;
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 700;
   color: var(--gold);
   display: block;
 }
 
 .kom-tagline {
-  font-family: var(--font-serif);
-  font-style: italic;
+  font-family: var(--font-body);
+  font-style: normal;
   font-size: 14px;
   color: var(--muted);
   line-height: 1.6;
@@ -153,6 +148,8 @@
   color: var(--muted);
   background: rgba(201, 168, 76, 0.04);
   transition: border-color 0.2s, color 0.2s;
+  display: inline-block;
+  will-change: transform;
 }
 
 .kom-badge:hover {
@@ -267,12 +264,6 @@
   flex-direction: column;
   gap: 16px;
   overflow: hidden;
-  transition: background 0.3s;
-  animation: fadeUp 0.45s var(--delay, 0s) both;
-}
-
-.room-card:hover {
-  background: rgba(201, 168, 76, 0.04);
 }
 
 /* bottom-right corner accent */
@@ -362,7 +353,7 @@
 .cta-heading {
   font-family: var(--font-display);
   font-size: clamp(28px, 5vw, 44px);
-  font-weight: 900;
+  font-weight: 700;
   color: var(--cream);
   letter-spacing: -0.02em;
   margin-bottom: 32px;
@@ -376,7 +367,7 @@
   background: var(--gold);
   color: var(--ink);
   text-decoration: none;
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -393,6 +384,7 @@
   background: var(--gold2);
   transform: translateX(-100%);
   transition: transform 0.3s ease;
+  z-index: 0;
 }
 
 .cta-btn:hover::before {
@@ -403,12 +395,19 @@
   transform: translateY(-2px);
 }
 
-.cta-btn svg {
+.cta-btn svg,
+.cta-btn span {
   width: 16px;
   height: 16px;
   stroke: var(--ink);
   position: relative;
   z-index: 1;
+}
+
+.cta-btn span {
+  width: auto;
+  height: auto;
+  stroke: none;
 }
 
 /* ── Screenshots gallery for each room/group ── */
@@ -425,13 +424,27 @@
 }
 .screenshots-grid img {
   width: 100%;
-  height: 160px;
-  object-fit: cover;
+  max-width: 320px;
+  height: auto;
+  object-fit: contain;
   display: block;
+  margin: 0 auto;
   border: 1px solid var(--line);
 }
 
-.cta-btn span,
+.kom-shot {
+  margin: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.kom-shot figcaption {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 8px;
+  font-family: var(--font-body);
+}
+
 .cta-btn {
   position: relative;
   z-index: 1;
@@ -459,11 +472,4 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .scroll-reveal,
-  .scroll-reveal.is-visible {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
+/* reduced-motion handled in animations.css */
