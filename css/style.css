@@ -280,9 +280,9 @@ a:hover {
    ========================================================================== */
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 32px 20px;
+  max-width: 100%;
+  margin: 0;
+  padding: 32px 0;
 }
 
 .section-header {
