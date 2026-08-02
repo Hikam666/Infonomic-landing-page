@@ -444,7 +444,177 @@
     }
   }
 </style>
+
+<style id="inf-hamburger-adaptive-system">
+  /* Desktop default: Hide Hamburger Button */
+  #inf-hamburger-btn {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    /* 1. Show Hamburger Menu Button on Mobile (Width <= 768px) */
+    #inf-hamburger-btn {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 38px !important;
+      height: 38px !important;
+      background: #1544d6 !important;
+      color: #ffffff !important;
+      border: none !important;
+      border-radius: 8px !important;
+      font-size: 20px !important;
+      font-weight: 700 !important;
+      cursor: pointer !important;
+      margin-left: auto !important;
+      flex-shrink: 0 !important;
+      z-index: 100001 !important;
+      box-shadow: 0 4px 12px rgba(21, 68, 214, 0.4) !important;
+      transition: transform 0.15s ease !important;
+    }
+
+    #inf-hamburger-btn:active {
+      transform: scale(0.92) !important;
+    }
+
+    /* 2. Hide inline Nav links by default on mobile, turn into Slide-down Drawer */
+    header nav {
+      display: none !important;
+      position: absolute !important;
+      top: 100% !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      background: #0e1116 !important;
+      padding: 16px !important;
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5) !important;
+      border-bottom: 2px solid #1544d6 !important;
+      flex-direction: column !important;
+      align-items: stretch !important;
+      gap: 6px !important;
+      z-index: 100000 !important;
+    }
+
+    /* Active Hamburger Menu State */
+    header nav.inf-mobile-nav-open {
+      display: flex !important;
+      animation: infNavSlideDown 0.22s ease-out forwards !important;
+    }
+
+    @keyframes infNavSlideDown {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header nav a, header nav button {
+      display: flex !important;
+      align-items: center !important;
+      padding: 12px 16px !important;
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      color: #f1f5f9 !important;
+      border-radius: 8px !important;
+      background: rgba(255, 255, 255, 0.06) !important;
+      text-decoration: none !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+
+    header nav a:hover, header nav a:active {
+      background: #1544d6 !important;
+      color: #ffffff !important;
+      border-color: #1544d6 !important;
+    }
+
+    /* 3. Header Top Bar Alignment */
+    header > div {
+      position: relative !important;
+      padding: 10px 14px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+    }
+
+    /* 4. Full Width Layout Adaptation for Elements */
+    section {
+      padding-left: 14px !important;
+      padding-right: 14px !important;
+      padding-top: 20px !important;
+      padding-bottom: 20px !important;
+    }
+
+    /* Cards stack to 1 column */
+    div[style*="display:grid"], section[style*="display:grid"] {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 14px !important;
+    }
+
+    /* Live Market cards 2x2 grid */
+    div[style*="grid-template-columns:repeat(4,1fr)"],
+    div[style*="grid-template-columns: repeat(4,1fr)"] {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px !important;
+    }
+
+    /* Tables horizontal touch-scroll */
+    table {
+      min-width: 580px !important;
+      display: block !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    div[style*="grid-template-columns:repeat(4,1fr)"] {
+      display: flex !important;
+      flex-direction: column !important;
+    }
+  }
+</style>
+
+<script id="inf-hamburger-script">
+(function() {
+  document.addEventListener('DOMContentLoaded', function() {
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    // Inject Hamburger button if not present
+    let btn = document.getElementById('inf-hamburger-btn');
+    if (!btn) {
+      btn = document.createElement('button');
+      btn.id = 'inf-hamburger-btn';
+      btn.setAttribute('aria-label', 'Menu Navigasi');
+      btn.innerHTML = '☰';
+      
+      const topBar = header.querySelector('div') || header;
+      topBar.appendChild(btn);
+    }
+
+    // Toggle menu drawer
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const nav = header.querySelector('nav');
+      if (!nav) return;
+      const isOpen = nav.classList.toggle('inf-mobile-nav-open');
+      btn.innerHTML = isOpen ? '✕' : '☰';
+    });
+
+    // Close menu when clicking outside or clicking any nav link
+    document.addEventListener('click', function(e) {
+      const nav = header.querySelector('nav');
+      if (!nav || !nav.classList.contains('inf-mobile-nav-open')) return;
+      if (!nav.contains(e.target) && e.target !== btn) {
+        nav.classList.remove('inf-mobile-nav-open');
+        if (btn) btn.innerHTML = '☰';
+      }
+    });
+  });
+})();
+</script>
 </head>
+
 
 
 
