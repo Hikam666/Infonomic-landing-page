@@ -103,7 +103,206 @@
     }
   }
 </style>
+
+<style id="inf-mobile-perfection-fix">
+  /* ==========================================================================
+     MOBILE RESPONSIVE & LAYOUT PERFECTION (Width <= 768px)
+     ========================================================================== */
+
+  /* Viewport Meta Safety */
+  @viewport { width: device-width; initial-scale: 1.0; }
+
+  @media (max-width: 768px) {
+    /* 1. Global Reset & Padding */
+    html, body {
+      font-size: 14px !important;
+      overflow-x: hidden !important;
+      width: 100% !important;
+    }
+
+    .container, .hero-inner, .site-nav, .footer-inner, [class*="-inner"] {
+      padding-left: 14px !important;
+      padding-right: 14px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    /* 2. Header & Ticker Bar */
+    .ticker-bar {
+      padding: 4px 8px !important;
+      font-size: 11px !important;
+    }
+
+    .ticker-label {
+      font-size: 10px !important;
+      padding: 2px 6px !important;
+      margin-right: 8px !important;
+    }
+
+    .site-nav {
+      padding: 10px 14px !important;
+    }
+
+    .brand-logo {
+      font-size: 15px !important;
+    }
+
+    .brand-logo img {
+      width: 28px !important;
+      height: 28px !important;
+    }
+
+    /* 3. Hero Section Stack */
+    .hero {
+      padding: 28px 14px !important;
+    }
+
+    .hero-inner {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 24px !important;
+    }
+
+    .hero-title {
+      font-size: 24px !important;
+      line-height: 1.3 !important;
+      margin-bottom: 12px !important;
+    }
+
+    .hero-sub {
+      font-size: 13px !important;
+      margin-bottom: 18px !important;
+    }
+
+    .hero-ctas {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 10px !important;
+      width: 100% !important;
+    }
+
+    .hero-ctas .btn {
+      width: 100% !important;
+      text-align: center !important;
+      justify-content: center !important;
+      padding: 10px 16px !important;
+    }
+
+    .hero-stats {
+      display: flex !important;
+      justify-content: space-around !important;
+      gap: 10px !important;
+      margin-top: 24px !important;
+      padding-top: 16px !important;
+    }
+
+    .stat-item .num {
+      font-size: 18px !important;
+    }
+
+    .stat-item .lbl {
+      font-size: 11px !important;
+    }
+
+    .hero-card-box {
+      width: 100% !important;
+      gap: 10px !important;
+    }
+
+    .floating-card {
+      padding: 12px !important;
+    }
+
+    /* 4. Grids: All Grids to Single Column */
+    .grid-2, .grid-3, .grid-4, [class*="grid-"] {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 16px !important;
+    }
+
+    .card {
+      padding: 16px !important;
+      border-radius: 12px !important;
+    }
+
+    /* 5. Section Headers & Titles */
+    .section-title {
+      font-size: 20px !important;
+    }
+
+    .section-subtitle {
+      font-size: 13px !important;
+    }
+
+    /* 6. Touch-Friendly Responsive Tables */
+    .table-responsive {
+      display: block !important;
+      width: 100% !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      border-radius: 8px !important;
+      margin-bottom: 16px !important;
+    }
+
+    .data-table {
+      font-size: 12px !important;
+      min-width: 600px !important; /* Ensures readable columns with horizontal scroll */
+    }
+
+    .data-table th, .data-table td {
+      padding: 10px 8px !important;
+      white-space: nowrap !important;
+    }
+
+    /* 7. Buttons & Forms Full-Width on Mobile */
+    .btn {
+      padding: 10px 16px !important;
+      font-size: 13px !important;
+    }
+
+    form input, form select, form button {
+      font-size: 14px !important;
+    }
+
+    /* 8. Footer Mobile Alignment */
+    .footer-inner {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 24px !important;
+      text-align: left !important;
+    }
+
+    .footer-bottom {
+      font-size: 11px !important;
+      padding-top: 16px !important;
+    }
+
+    /* 9. Lock Banners Stack */
+    .lock-banner {
+      flex-direction: column !important;
+      padding: 18px !important;
+      text-align: center !important;
+    }
+
+    .lock-banner .btn {
+      width: 100% !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title {
+      font-size: 21px !important;
+    }
+    .hero-tag {
+      font-size: 11px !important;
+    }
+    .data-table {
+      font-size: 11px !important;
+    }
+  }
+</style>
 </head>
+
 
 
 
