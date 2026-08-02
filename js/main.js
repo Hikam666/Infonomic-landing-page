@@ -1,6 +1,7 @@
 /* ═══════════════════════════════════════════════
    infonomic.id — main.js
-   Stats, ticker, scroll reveals, lightbox, motion
+   Stats, scroll reveals, lightbox, motion
+   (Market ticker: TradingView embed di index.html)
    ═══════════════════════════════════════════════ */
 
 'use strict';
@@ -13,18 +14,6 @@ const STATS = {
   followers: 1700,
   anggota: 200,
 };
-
-/** Sample market ticker values (demo). Update freely. */
-const TICKER_DATA = [
-  { label: 'IDX COMPOSITE', value: '7.245,12' },
-  { label: 'BTC/USD', value: '67.420' },
-  { label: 'USD/IDR', value: '16.185' },
-  { label: 'BI RATE', value: '5,75%' },
-  { label: 'GDP GROWTH', value: '5,1%' },
-  { label: 'INFLASI', value: '2,8%' },
-  { label: 'GOLD', value: '$2.348' },
-  { label: 'XAU', value: '2.348,4' },
-];
 
 /* ── Utility: animated counter ───────────────── */
 function countUp(el, target, duration) {
@@ -68,51 +57,6 @@ function initStats() {
     countUp(elFollowers, STATS.followers, 1500);
     countUp(elAnggota, STATS.anggota, 1500);
   }, DELAY);
-}
-
-/* ── Ticker: fill + flip refresh ─────────────── */
-function setTickerValues(animate) {
-  const ticker = document.getElementById('ticker');
-  if (!ticker) return;
-
-  const strongs = ticker.querySelectorAll('span:not(.sep) strong');
-  const half = TICKER_DATA.length;
-
-  strongs.forEach((el, i) => {
-    const data = TICKER_DATA[i % half];
-    if (!data) return;
-    el.textContent = data.value;
-    if (animate && !prefersReducedMotion()) {
-      el.classList.remove('tick-flip');
-      // force reflow for re-trigger
-      void el.offsetWidth;
-      el.classList.add('tick-flip');
-      el.addEventListener(
-        'animationend',
-        () => el.classList.remove('tick-flip'),
-        { once: true }
-      );
-    }
-  });
-}
-
-function initTicker() {
-  const ticker = document.getElementById('ticker');
-  if (!ticker) return;
-
-  setTickerValues(false);
-
-  ticker.addEventListener('mouseenter', () => {
-    ticker.style.animationPlayState = 'paused';
-  });
-  ticker.addEventListener('mouseleave', () => {
-    ticker.style.animationPlayState = 'running';
-  });
-
-  if (prefersReducedMotion()) return;
-
-  // Periodic soft “refresh” flip every 8s
-  setInterval(() => setTickerValues(true), 8000);
 }
 
 /* ── Generic IntersectionObserver reveal ─────── */
@@ -223,7 +167,9 @@ function initMagneticLinks() {
 
 /* ── Gallery lightbox ────────────────────────── */
 function initLightbox() {
-  const items = Array.from(document.querySelectorAll('.gallery-item img'));
+  const items = Array.from(
+    document.querySelectorAll('.gallery-item img, .history-card-media img')
+  );
   if (!items.length) return;
 
   let lightbox = document.getElementById('lightbox');
@@ -275,7 +221,7 @@ function initLightbox() {
   }
 
   items.forEach((img, i) => {
-    const item = img.closest('.gallery-item') || img;
+    const item = img.closest('.gallery-item, .history-card') || img;
     item.style.cursor = 'zoom-in';
     item.addEventListener('click', () => open(i));
     item.setAttribute('tabindex', '0');
@@ -351,10 +297,170 @@ function initPageTransition() {
   });
 }
 
+/* ── TradingView embeds (JSON config via JS → no editor false errors) ── */
+const TV_TICKER_TAPE =
+  'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
+const TV_MARKET_OVERVIEW =
+  'https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js';
+
+const TV_WIDGETS = {
+  'ticker-stocks': {
+    src: TV_TICKER_TAPE,
+    config: {
+      symbols: [
+        { proName: 'IDX:BBCA', title: 'BBCA' },
+        { proName: 'IDX:BBRI', title: 'BBRI' },
+        { proName: 'IDX:BMRI', title: 'BMRI' },
+        { proName: 'IDX:BBNI', title: 'BBNI' },
+        { proName: 'IDX:TLKM', title: 'TLKM' },
+        { proName: 'IDX:ASII', title: 'ASII' },
+        { proName: 'IDX:GOTO', title: 'GOTO' },
+        { proName: 'IDX:AMRT', title: 'AMRT' },
+        { proName: 'IDX:UNVR', title: 'UNVR' },
+        { proName: 'IDX:ICBP', title: 'ICBP' },
+        { proName: 'IDX:ADRO', title: 'ADRO' },
+        { proName: 'IDX:MDKA', title: 'MDKA' },
+        { proName: 'IDX:BRIS', title: 'BRIS' },
+        { proName: 'IDX:ANTM', title: 'ANTM' },
+      ],
+      showSymbolLogo: true,
+      isTransparent: true,
+      displayMode: 'adaptive',
+      colorTheme: 'dark',
+      locale: 'id',
+    },
+  },
+  'ticker-crypto': {
+    src: TV_TICKER_TAPE,
+    config: {
+      symbols: [
+        { proName: 'BINANCE:BTCUSDT', title: 'BTC' },
+        { proName: 'BINANCE:ETHUSDT', title: 'ETH' },
+        { proName: 'BINANCE:BNBUSDT', title: 'BNB' },
+        { proName: 'BINANCE:SOLUSDT', title: 'SOL' },
+        { proName: 'BINANCE:XRPUSDT', title: 'XRP' },
+        { proName: 'BINANCE:DOGEUSDT', title: 'DOGE' },
+        { proName: 'BINANCE:ADAUSDT', title: 'ADA' },
+        { proName: 'BINANCE:AVAXUSDT', title: 'AVAX' },
+        { proName: 'BINANCE:DOTUSDT', title: 'DOT' },
+        { proName: 'BINANCE:LINKUSDT', title: 'LINK' },
+        { proName: 'BINANCE:POLUSDT', title: 'POL' },
+        { proName: 'BINANCE:TONUSDT', title: 'TON' },
+      ],
+      showSymbolLogo: true,
+      isTransparent: true,
+      displayMode: 'adaptive',
+      colorTheme: 'dark',
+      locale: 'id',
+    },
+  },
+  'market-overview': {
+    src: TV_MARKET_OVERVIEW,
+    config: {
+      colorTheme: 'dark',
+      dateRange: '1D',
+      showChart: true,
+      locale: 'id',
+      width: '100%',
+      height: '420',
+      largeChartUrl: '',
+      isTransparent: true,
+      showSymbolLogo: true,
+      showFloatingTooltip: false,
+      plotLineColorGrowing: 'rgba(201, 168, 76, 1)',
+      plotLineColorFalling: 'rgba(181, 55, 42, 1)',
+      gridLineColor: 'rgba(201, 168, 76, 0.12)',
+      scaleFontColor: 'rgba(245, 240, 232, 0.55)',
+      belowLineFillColorGrowing: 'rgba(201, 168, 76, 0.12)',
+      belowLineFillColorFalling: 'rgba(181, 55, 42, 0.12)',
+      belowLineFillColorGrowingBottom: 'rgba(201, 168, 76, 0)',
+      belowLineFillColorFallingBottom: 'rgba(181, 55, 42, 0)',
+      symbolActiveColor: 'rgba(201, 168, 76, 0.12)',
+      tabs: [
+        {
+          title: 'Live',
+          symbols: [
+            { s: 'IDX:COMPOSITE', d: 'IHSG' },
+            { s: 'FX_IDC:USDIDR', d: 'USD/IDR' },
+            { s: 'OANDA:XAUUSD', d: 'XAU' },
+            { s: 'BINANCE:BTCUSDT', d: 'BTC' },
+          ],
+          originalTitle: 'Live',
+        },
+      ],
+    },
+  },
+};
+
+function mountTradingViewWidget(container, src, config) {
+  if (!container || container.dataset.tvMounted === '1') return;
+  container.dataset.tvMounted = '1';
+
+  if (!container.querySelector('.tradingview-widget-container__widget')) {
+    const slot = document.createElement('div');
+    slot.className = 'tradingview-widget-container__widget';
+    container.appendChild(slot);
+  }
+
+  const script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.async = true;
+  // TradingView reads document.currentScript.innerHTML via JSON.parse
+  script.text = JSON.stringify(config);
+  script.src = src;
+  container.appendChild(script);
+}
+
+function initTradingViewWidgets() {
+  document.querySelectorAll('[data-tv-widget]').forEach((el) => {
+    const key = el.getAttribute('data-tv-widget');
+    const def = TV_WIDGETS[key];
+    if (!def) return;
+    mountTradingViewWidget(el, def.src, def.config);
+  });
+}
+
+/* ── Mobile site nav ─────────────────────────── */
+function initSiteNav() {
+  const toggle = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('site-nav-menu');
+  if (!toggle || !menu) return;
+
+  const closeMenu = () => {
+    menu.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Buka menu');
+  };
+
+  const openMenu = () => {
+    menu.classList.add('is-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Tutup menu');
+  };
+
+  toggle.addEventListener('click', () => {
+    if (menu.classList.contains('is-open')) closeMenu();
+    else openMenu();
+  });
+
+  menu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) closeMenu();
+  });
+}
+
 /* ── Boot ────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
+  initSiteNav();
+  initTradingViewWidgets();
   initStats();
-  initTicker();
   initScrollReveal();
   initLineReveal();
   initParallaxGlow();
