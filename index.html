@@ -194,7 +194,50 @@
       align-items: center !important;
     }
 
-    /* 9. Mobile Proof Showcase (BBNI & Swing cards zero-crop display) */
+    /* 9. Gate Banners & Repeating Gradient Cards (Riset, Edu Series, etc.) */
+    div[style*="repeating-linear-gradient"], div[style*="background-image:repeating-linear-gradient"],
+    div[style*="background-image: repeating-linear-gradient"] {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      padding: 24px 18px !important;
+      gap: 18px !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    div[style*="repeating-linear-gradient"] > div,
+    div[style*="background-image:repeating-linear-gradient"] > div,
+    div[style*="margin-left:auto;display:flex;gap:10px;flex:none"],
+    div[style*="margin-left: auto; display: flex; gap: 10px; flex: none"],
+    div[style*="margin-left:auto;display:flex;gap:8px;flex:none"],
+    div[style*="margin-left: auto; display: flex; gap: 8px; flex: none"] {
+      margin-left: 0 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      flex: 1 1 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 10px !important;
+      box-sizing: border-box !important;
+    }
+
+    div[style*="repeating-linear-gradient"] a,
+    div[style*="background-image:repeating-linear-gradient"] a,
+    div[style*="repeating-linear-gradient"] button,
+    div[style*="background-image:repeating-linear-gradient"] button {
+      width: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      padding: 13px 20px !important;
+      font-size: 14.5px !important;
+      box-sizing: border-box !important;
+    }
+
+    /* 10. Mobile Proof Showcase (BBNI & Swing cards zero-crop display) */
     #inf-mobile-proof-showcase {
       display: flex !important;
       flex-direction: column !important;
@@ -219,7 +262,7 @@
       display: block !important;
     }
 
-    /* 10. Tables Touch Scrolling & Footer Alignment */
+    /* 11. Tables Touch Scrolling & Footer Alignment */
     table, div[style*="overflow:hidden"] table, .data-table {
       width: 100% !important;
       display: block !important;
@@ -369,14 +412,14 @@
       }
 
       const linksHTML = 
-        '<a href="index.html" style="display: block; padding: 14px 18px; font-size: 16px; font-weight: 600; color: #f1f5f9; border-bottom: 1px solid rgba(255,255,255,0.08); text-decoration: none; border-radius: 12px; margin-bottom: 8px; background: rgba(255,255,255,0.04); transition: background 0.15s ease;">🏠 Home</a>' +
-        '<a href="artikel.html" style="display: block; padding: 14px 18px; font-size: 16px; font-weight: 600; color: #f1f5f9; border-bottom: 1px solid rgba(255,255,255,0.08); text-decoration: none; border-radius: 12px; margin-bottom: 8px; background: rgba(255,255,255,0.04); transition: background 0.15s ease;">📰 Artikel</a>' +
-        '<a href="emiten.html" style="display: block; padding: 14px 18px; font-size: 16px; font-weight: 600; color: #f1f5f9; border-bottom: 1px solid rgba(255,255,255,0.08); text-decoration: none; border-radius: 12px; margin-bottom: 8px; background: rgba(255,255,255,0.04); transition: background 0.15s ease;">📈 Emiten</a>' +
-        '<a href="crypto.html" style="display: block; padding: 14px 18px; font-size: 16px; font-weight: 600; color: #f1f5f9; border-bottom: 1px solid rgba(255,255,255,0.08); text-decoration: none; border-radius: 12px; margin-bottom: 8px; background: rgba(255,255,255,0.04); transition: background 0.15s ease;">🪙 Crypto</a>' +
-        '<a href="event.html" style="display: block; padding: 14px 18px; font-size: 16px; font-weight: 600; color: #f1f5f9; border-bottom: 1px solid rgba(255,255,255,0.08); text-decoration: none; border-radius: 12px; margin-bottom: 8px; background: rgba(255,255,255,0.04); transition: background 0.15s ease;">📅 Event</a>' +
-        '<a href="komunitas.html" style="display: block; padding: 14px 18px; font-size: 16px; font-weight: 600; color: #f1f5f9; border-bottom: 1px solid rgba(255,255,255,0.08); text-decoration: none; border-radius: 12px; margin-bottom: 8px; background: rgba(255,255,255,0.04); transition: background 0.15s ease;">👥 Komunitas</a>' +
-        '<a href="research.html" style="display: block; padding: 14px 18px; font-size: 16px; font-weight: 600; color: #f1f5f9; border-bottom: 1px solid rgba(255,255,255,0.08); text-decoration: none; border-radius: 12px; margin-bottom: 8px; background: rgba(255,255,255,0.04); transition: background 0.15s ease;">🔍 Riset 🔒</a>' +
-        '<a href="edu.html" style="display: block; padding: 14px 18px; font-size: 16px; font-weight: 600; color: #f1f5f9; border-bottom: 1px solid rgba(255,255,255,0.08); text-decoration: none; border-radius: 12px; margin-bottom: 8px; background: rgba(255,255,255,0.04); transition: background 0.15s ease;">🎓 Edu Series 🔒</a>';
+        '<a href="index.html" style="display: block; padding: 14px 18px; font-size: 16px; font-weight: 600; color: #f1f5f9; border-bottom: 1px solid rgba(255,255,255,0.08); text-decoration: none; border-radius: 12px; margin-bottom: 8px; background: rgba(255,255,255,0.04); transition: background 0.15s ease;">Home</a>' +
+        '<a href="artikel.html" style="display: block; padding: 14px 18px; font-size: 16px; font-weight: 600; color: #f1f5f9; border-bottom: 1px solid rgba(255,255,255,0.08); text-decoration: none; border-radius: 12px; margin-bottom: 8px; background: rgba(255,255,255,0.04); transition: background 0.15s ease;">Artikel</a>' +
+        '<a href="emiten.html" style="display: block; padding: 14px 18px; font-size: 16px; font-weight: 600; color: #f1f5f9; border-bottom: 1px solid rgba(255,255,255,0.08); text-decoration: none; border-radius: 12px; margin-bottom: 8px; background: rgba(255,255,255,0.04); transition: background 0.15s ease;">Emiten</a>' +
+        '<a href="crypto.html" style="display: block; padding: 14px 18px; font-size: 16px; font-weight: 600; color: #f1f5f9; border-bottom: 1px solid rgba(255,255,255,0.08); text-decoration: none; border-radius: 12px; margin-bottom: 8px; background: rgba(255,255,255,0.04); transition: background 0.15s ease;">Crypto</a>' +
+        '<a href="event.html" style="display: block; padding: 14px 18px; font-size: 16px; font-weight: 600; color: #f1f5f9; border-bottom: 1px solid rgba(255,255,255,0.08); text-decoration: none; border-radius: 12px; margin-bottom: 8px; background: rgba(255,255,255,0.04); transition: background 0.15s ease;">Event</a>' +
+        '<a href="komunitas.html" style="display: block; padding: 14px 18px; font-size: 16px; font-weight: 600; color: #f1f5f9; border-bottom: 1px solid rgba(255,255,255,0.08); text-decoration: none; border-radius: 12px; margin-bottom: 8px; background: rgba(255,255,255,0.04); transition: background 0.15s ease;">Komunitas</a>' +
+        '<a href="research.html" style="display: block; padding: 14px 18px; font-size: 16px; font-weight: 700; color: #f4d06f !important; border-bottom: 1px solid rgba(255,255,255,0.08); text-decoration: none; border-radius: 12px; margin-bottom: 8px; background: rgba(244,208,111,0.06); transition: background 0.15s ease;">Riset</a>' +
+        '<a href="edu.html" style="display: block; padding: 14px 18px; font-size: 16px; font-weight: 700; color: #f4d06f !important; border-bottom: 1px solid rgba(255,255,255,0.08); text-decoration: none; border-radius: 12px; margin-bottom: 8px; background: rgba(244,208,111,0.06); transition: background 0.15s ease;">Edu Series</a>';
 
       drawer.innerHTML = 
         '<div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.12); margin-bottom: 18px;">' +
@@ -454,7 +497,6 @@
             card.style.setProperty('box-shadow', '0 10px 28px rgba(14,17,22,0.22)', 'important');
             card.style.setProperty('overflow', 'hidden', 'important');
             
-            // Explicitly ensure BBNI card loads the pristine BBNIPROFIT.jpeg asset
             if (card.textContent.includes('BBNI')) {
               const bbniImg = card.querySelector('img');
               if (bbniImg && !bbniImg.getAttribute('src').includes('BBNIPROFIT.jpeg')) {
@@ -485,7 +527,39 @@
         }
       }
 
-      // 3. Global Anti-Overflow containment
+      // 3. Fix Gate Banners & Repeating Gradient Cards (Riset & Edu Series Member Banners)
+      document.querySelectorAll('div[style*="repeating-linear-gradient"]').forEach(el => {
+        el.style.setProperty('display', 'flex', 'important');
+        el.style.setProperty('flex-direction', 'column', 'important');
+        el.style.setProperty('align-items', 'flex-start', 'important');
+        el.style.setProperty('padding', '24px 18px', 'important');
+        el.style.setProperty('gap', '18px', 'important');
+        el.style.setProperty('width', '100%', 'important');
+        el.style.setProperty('max-width', '100%', 'important');
+        el.style.setProperty('box-sizing', 'border-box', 'important');
+
+        el.querySelectorAll('div[style*="margin-left"], div[style*="display: flex"], div[style*="display:flex"]').forEach(sub => {
+          sub.style.setProperty('margin-left', '0', 'important');
+          sub.style.setProperty('display', 'flex', 'important');
+          sub.style.setProperty('flex-direction', 'column', 'important');
+          sub.style.setProperty('width', '100%', 'important');
+          sub.style.setProperty('max-width', '100%', 'important');
+          sub.style.setProperty('gap', '10px', 'important');
+          sub.style.setProperty('box-sizing', 'border-box', 'important');
+        });
+
+        el.querySelectorAll('a, button').forEach(btn => {
+          btn.style.setProperty('width', '100%', 'important');
+          btn.style.setProperty('display', 'flex', 'important');
+          btn.style.setProperty('align-items', 'center', 'important');
+          btn.style.setProperty('justify-content', 'center', 'important');
+          btn.style.setProperty('text-align', 'center', 'important');
+          btn.style.setProperty('box-sizing', 'border-box', 'important');
+          btn.style.setProperty('padding', '13px 20px', 'important');
+        });
+      });
+
+      // 4. Global Anti-Overflow containment
       const maxW = window.innerWidth;
       document.querySelectorAll('body > *, section, section > div, div[data-screen-label]').forEach(el => {
         if (el.scrollWidth > maxW && !el.id?.includes('bundler') && !el.closest('table') && !el.closest('[style*="overflow"]') && el.tagName !== 'TABLE' && el.tagName !== 'TBODY' && el.tagName !== 'TR' && el.tagName !== 'TD' && el.tagName !== 'TH') {
