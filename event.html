@@ -464,7 +464,7 @@
       if (floatCards.length > 0) {
         let proofContainer = document.getElementById('inf-mobile-proof-showcase');
         if (!proofContainer) {
-          const ctaBtn = Array.from(document.querySelectorAll('section a')).find(a => a.textContent.includes('Gabung') || a.textContent.includes('Baca artikel'));
+          const ctaBtn = Array.from(document.querySelectorAll('section a')).find(a => /Gabung|Baca artikel|Mulai|ekslusif|eksklusif|Eksplor|eksplor/i.test(a.textContent));
           if (ctaBtn && ctaBtn.parentElement) {
             const ctaRow = ctaBtn.parentElement;
             proofContainer = document.createElement('div');
